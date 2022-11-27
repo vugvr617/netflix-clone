@@ -5,7 +5,7 @@ import styles from "../styles/Home.module.css";
 
 export default function Home() {
   return (
-    <div>
+    <div className="relative h-screen">
       <Head>
         <title>Home - Netflix</title>
       </Head>
