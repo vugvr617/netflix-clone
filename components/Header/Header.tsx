@@ -29,8 +29,8 @@ const Header = () => {
           width={130}
           className="cursor-pointer"
         />
-        <ul className="hidden space-x-2 md:flex flex-row">
-          <li className="header-link">Home</li>
+        <ul className="hidden space-x-4 md:flex flex-row">
+          <li className="header-link font-semibold">Home</li>
           <li className="header-link">TV Shows</li>
           <li className="header-link">Movies</li>
           <li className="header-link">New & Popular</li>

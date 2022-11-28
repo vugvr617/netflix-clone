@@ -7,12 +7,15 @@
     @apply bg-[#141414] text-[#e5e5e5];
   }
   header {
-    @apply flex justify-between flex-row w-full fixed z-50 px-4 transition-all lg:px-10;
+    @apply flex top-0 left-0 justify-between flex-row w-full fixed z-50 px-4 transition-all py-0 lg:px-10;
   }
 }
 
 @layer components {
   .header-link {
     @apply cursor-pointer text-sm font-light text-[#e5e5e5] transition duration-[0.4s] hover:text-[#b3b3b3];
+  }
+  .banner-button {
+    @apply flex items-center gap-x-3 text-sm md:text-xl px-5 py-3 rounded lg:text-2xl;
   }
 }
