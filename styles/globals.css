@@ -4,10 +4,10 @@
 
 @layer base {
   body {
-    @apply bg-[#141414] text-[#e5e5e5];
+    @apply bg-[#141414] text-[#e5e5e5] scrollbar-hide;
   }
   header {
-    @apply flex top-0 left-0 justify-between flex-row w-full fixed z-50 px-4 transition-all py-0 lg:px-10;
+    @apply h-[70px] flex top-0 left-0 justify-between flex-row w-full fixed z-50 px-4 transition-all py-0 lg:px-10;
   }
 }
 

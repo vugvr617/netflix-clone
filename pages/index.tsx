@@ -3,26 +3,36 @@ import Header from "../components/Header/Header";
 import requests from "../services/requests";
 import { IMovie } from "../interfaces/IData.d";
 import Banner from "../components/Banner/Banner";
-import MoviesRow from '../components/MoviesRow/MoviesRow';
+import MoviesRow from "../components/MoviesRow/MoviesRow";
 
 interface IMainPage {
   netflixOriginals: Array<IMovie>;
+  trendingNow: Array<IMovie>;
+  topRated: Array<IMovie>;
+  actionMovies: Array<IMovie>;
+  comedyMovies: Array<IMovie>;
+  horrorMovies: Array<IMovie>;
+  romanceMovies: Array<IMovie>;
+  documentaries: Array<IMovie>;
 }
 
-export default function Home({ netflixOriginals }: IMainPage) {
-
+export default function Home({ netflixOriginals, topRated, actionMovies, romanceMovies, comedyMovies, trendingNow }: IMainPage) {
   return (
-    <div className="relative h-screen bg-gradient-to-b from-gray-900/10 to-[#141414]">
+    <div className="relative max-w-screen bg-gradient-to-b from-gray-900/10 to-[#141414]">
       <Head>
         <title>Home - Netflix</title>
       </Head>
       <div>
         <Header />
-        <main>
+        <main className="max-w-screen">
           <Banner netflixOriginals={netflixOriginals} />
-          <section>
-            {/* <MoviesRow title="Trending Now"/>
-            <MoviesRow title="Top Rated"/> */}
+          <section className="px-4 space-y-10 md:px-10">
+            <MoviesRow moviesData={trendingNow} title="Trending Now" />
+            <MoviesRow moviesData={topRated} title="Top Rated" />
+            <MoviesRow moviesData={actionMovies} title="Action Thrillers" />
+            <MoviesRow moviesData={trendingNow} title="Trending Now" />
+            <MoviesRow moviesData={comedyMovies} title="Comedies" />
+            <MoviesRow moviesData={romanceMovies} title="Romantic" />
           </section>
         </main>
       </div>
