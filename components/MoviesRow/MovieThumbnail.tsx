@@ -15,7 +15,7 @@ const MovieThumbnail = ({ movie }: IMovieThumbnailProps) => {
         layout="fill"
         alt={"Thumbnail"}
         objectFit="cover"
-        className="relative rounded-sm object-cover"
+        className="rounded-sm object-cover"
       />
     </div>
   );

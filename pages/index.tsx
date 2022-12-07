@@ -20,7 +20,7 @@ export default function Home({ netflixOriginals, topRated, actionMovies, romance
   return (
     <div className="relative max-w-screen bg-gradient-to-b from-gray-900/10 to-[#141414]">
       <Head>
-        <title>Home - Netflix</title>
+        <title>Netflix</title>
       </Head>
       <div>
         <Header />

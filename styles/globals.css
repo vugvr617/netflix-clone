@@ -18,4 +18,7 @@
   .banner-button {
     @apply flex items-center gap-x-3 text-sm md:text-xl px-5 py-3 rounded lg:text-2xl;
   }
+  .login-input {
+    @apply bg-[#333] placeholder:text-[gray] w-[100%] h-[50px] py-2 px-3 rounded placeholder:text-sm;
+  }
 }
