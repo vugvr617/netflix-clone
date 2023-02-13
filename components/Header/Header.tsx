@@ -1,9 +1,16 @@
 import { useEffect, useState } from "react";
+import { signOut } from "firebase/auth";
+import { useAppDispatch } from "../../store/hooks";
+import { setUser } from "../../store/usersReducer";
+import { useRouter } from "next/router";
+import { auth } from "../../firebase";
 import { SearchIcon, BellIcon } from "@heroicons/react/solid";
 import Link from "next/link";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
+  const router = useRouter();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     const checkScroll = (): void => {
@@ -17,9 +24,19 @@ const Header = () => {
     window.addEventListener("scroll", checkScroll);
 
     return () => {
-        removeEventListener('scroll', checkScroll);
-    }
+      removeEventListener("scroll", checkScroll);
+    };
   }, []);
+
+  const logout = async () => {
+    signOut(auth)
+      .then(() => {
+        dispatch(setUser(null));
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
+  };
 
   return (
     <header className={`${isScrolled && "bg-[#141414]"}`}>
@@ -41,7 +58,7 @@ const Header = () => {
         <SearchIcon className="hidden text-[#e5e5e5] h-6 w-6 sm:inline" />
         <p className="hidden lg:inline">Kids</p>
         <BellIcon className="text-[#e5e5e5] h-6 w-6" />
-        <Link href="./account">
+        <Link href="/login" onClick={logout}>
           <img
             src="https://i.pinimg.com/736x/db/70/dc/db70dc468af8c93749d1f587d74dcb08.jpg"
             alt="profile-picture"

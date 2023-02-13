@@ -4,6 +4,8 @@ import requests from "../services/requests";
 import { IMovie } from "../interfaces/IData.d";
 import Banner from "../components/Banner/Banner";
 import MoviesRow from "../components/MoviesRow/MoviesRow";
+import { useAppSelector } from "../store/hooks";
+import { selectUserLoading } from "../store/usersReducer";
 
 interface IMainPage {
   netflixOriginals: Array<IMovie>;
@@ -16,28 +18,40 @@ interface IMainPage {
   documentaries: Array<IMovie>;
 }
 
-export default function Home({ netflixOriginals, topRated, actionMovies, romanceMovies, comedyMovies, trendingNow }: IMainPage) {
-  return (
-    <div className="relative max-w-screen bg-gradient-to-b from-gray-900/10 to-[#141414]">
-      <Head>
-        <title>Netflix</title>
-      </Head>
-      <div>
-        <Header />
-        <main className="max-w-screen">
-          <Banner netflixOriginals={netflixOriginals} />
-          <section className="px-4 space-y-10 md:px-10">
-            <MoviesRow moviesData={trendingNow} title="Trending Now" />
-            <MoviesRow moviesData={topRated} title="Top Rated" />
-            <MoviesRow moviesData={actionMovies} title="Action Thrillers" />
-            <MoviesRow moviesData={trendingNow} title="Trending Now" />
-            <MoviesRow moviesData={comedyMovies} title="Comedies" />
-            <MoviesRow moviesData={romanceMovies} title="Romantic" />
-          </section>
-        </main>
+export default function Home({
+  netflixOriginals,
+  topRated,
+  actionMovies,
+  romanceMovies,
+  comedyMovies,
+  trendingNow,
+}: IMainPage) {
+  const userLoading = useAppSelector(selectUserLoading);
+  if (!userLoading) {
+    return (
+      <div className="relative max-w-screen bg-gradient-to-b from-gray-900/10 to-[#141414]">
+        <Head>
+          <title>Netflix</title>
+        </Head>
+        <div>
+          <Header />
+          <main className="max-w-screen">
+            <Banner netflixOriginals={netflixOriginals} />
+            <section className="px-4 space-y-10 md:px-10">
+              <MoviesRow moviesData={trendingNow} title="Trending Now" />
+              <MoviesRow moviesData={topRated} title="Top Rated" />
+              <MoviesRow moviesData={actionMovies} title="Action Thrillers" />
+              <MoviesRow moviesData={trendingNow} title="Trending Now" />
+              <MoviesRow moviesData={comedyMovies} title="Comedies" />
+              <MoviesRow moviesData={romanceMovies} title="Romantic" />
+            </section>
+          </main>
+        </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    <div><p>Loading, please wait!</p></div>
+  }
 }
 
 export const getServerSideProps = async () => {
