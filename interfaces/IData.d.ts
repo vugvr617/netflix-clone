@@ -16,3 +16,18 @@ export interface IMovie {
   vote_average: number;
   vote_count: number;
 }
+
+export interface IGenre {
+  id: number
+  name: string
+}
+
+export interface IElement {
+  type:
+    | 'Bloopers'
+    | 'Featurette'
+    | 'Behind the Scenes'
+    | 'Clip'
+    | 'Trailer'
+    | 'Teaser'
+}
